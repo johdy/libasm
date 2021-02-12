@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/errno.h>
 
 typedef struct		s_list
 {
@@ -38,6 +40,37 @@ void free_function(void *ptr)
 	free(ptr);
 }
 
+void test_strcpy(char *ok3)
+{
+	printf("//////////TESTS STRCPY//////////\n");
+	ok3 = malloc(sizeof(char) * 5 + 1);
+	printf("%s\n", ft_strcpy(ok3, "abcd"));
+	printf("%s\n", ok3);
+	free(ok3);
+	ok3 = malloc(sizeof(char) * 83 + 1);
+	printf("%s\n", ft_strcpy(ok3, "Ligue des Champions : Barcelone - Paris SG\nSans Neymar ni Di Maria, comment faire ?"));
+	printf("%s\n", ok3);
+	free(ok3);
+	ok3 = malloc(sizeof(char) * 1);
+	printf("%s\n", ft_strcpy(ok3, ""));
+	printf("%s\n", ok3);
+	ok3 = malloc(sizeof(char) * 7);
+	printf("%s\n", ft_strcpy(ok3, "ah\0\0\0l"));
+	printf("%s\n", ok3);
+}
+
+void test_strlen(void)
+{
+	char *adam;
+
+	adam = "Adam a longtemps été fier de son père, un braqueur de l'ancienne école. Très vite, lui qui voulait marcher sur ses traces constate que la vie de voyou nest pas héréditaire.";
+	printf("//////////TESTS STRLEN//////////\n");
+	printf("hello : %zu\n", ft_strlen("hello"));
+	printf(" : %zu\n", ft_strlen(""));
+	printf("%s : %zu / %zu\n", adam, ft_strlen(adam), strlen(adam));
+
+}
+
 void test_strcmp(void)
 {
 	char *str1;
@@ -50,16 +83,32 @@ void test_strcmp(void)
 	str2 = "abricotiers";
 	strweird = "^àç!è§('ç!àé";
 	str0 = "";
-	printf("%d / %d\n", strcmp(str0, str0), ft_strcmp(str0, str0));
-	printf("%d / %d\n", strcmp(str1, str1), ft_strcmp(str1, str1));
-	printf("%d / %d\n", strcmp(str2, str1), ft_strcmp(str2, str1));
-	printf("%d / %d\n", strcmp(str1, str2), ft_strcmp(str1, str2));
-	printf("%d / %d\n", strcmp(str2, strnull), ft_strcmp(str2, strnull));
-	printf("%d / %d\n", strcmp(strnull, strnull), ft_strcmp(strnull, strnull));
-	printf("%d / %d\n", strcmp(str0, strnull), ft_strcmp(str0, strnull));
-	printf("%d / %d\n", strcmp(strnull, str0), ft_strcmp(strnull, str0));
-	printf("%d / %d\n", strcmp(str2, strweird), ft_strcmp(str2, strweird));
-	printf("%d / %d\n", strcmp(strweird + 4, strweird + 6), ft_strcmp(strweird + 4, strweird + 6));
+	printf("//////////TESTS STRCMP//////////\n");
+	printf("%s et %s : %d / %d\n", str0, str0, strcmp(str0, str0), ft_strcmp(str0, str0));
+	printf("%s et %s : %d / %d\n", str1, str1, strcmp(str1, str1), ft_strcmp(str1, str1));
+	printf("%s et %s : %d / %d\n", str2, str1, strcmp(str2, str1), ft_strcmp(str2, str1));
+	printf("%s et %s : %d / %d\n", str1, str2, strcmp(str1, str2), ft_strcmp(str1, str2));
+	printf("%s et %s : %d / %d\n", str2, strweird, strcmp(str2, strweird), ft_strcmp(str2, strweird));
+	printf("%s et %s : %d / %d\n", strweird + 5, strweird + 6, strcmp(strweird + 5, strweird + 6), ft_strcmp(strweird + 5, strweird + 6));
+}
+
+void test_write(void)
+{
+	int fd;
+	char *txt;
+	printf("//////////TESTS WRITE//////////\n");
+	ft_write(1, "ok\n", 3);
+	printf("***Creation d'un ficher test out_write\n");
+	fd = open("out_write", O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	printf("***Ecriture puis lecture\n");
+	txt = "Extraire la texture d'un jean denim dans les moindres détails pour la transformer en un filtre 3d, c'est technique. Alors pour la sortie de la nouvelle collection responsable Lee Jeans Europe et H&M, Nassim Bouaza et Meric Chaperon du studio Plus Mûrs nous montre tout. Le filtre est à essayer sur notre Insta\n";
+	ft_write(fd, txt, ft_strlen(txt));
+	system("cat out_write");
+	close(fd);
+	printf("***Fermeture du fichier\n");
+	printf("errno avant write dans fd ferme : %d\n", errno);
+	//ft_write(fd, "euh", 3);
+	printf("errno apres %d : %s\n", errno, strerror(errno));
 }
  
 int main(void)
@@ -75,11 +124,9 @@ int main(void)
 	t_list *new_list;
 
 	test_strcmp();
-	printf("%zu\n", ft_strlen("hello"));
-	ok3 = malloc(sizeof(char) * 5 + 1);
-	printf("%s\n",ft_strcpy(ok3, "abcd"));
-	printf("%s\n", ok3);
-	ft_write(7, "ok\n", 3);
+	test_strlen();
+	test_strcpy(ok3);
+	test_write();
 	ok4 = ft_strdup(ok);
 	printf("dup\n");
 	printf("%s\n", ok4);
