@@ -107,7 +107,7 @@ void test_write(void)
 	close(fd);
 	printf("***Fermeture du fichier\n");
 	printf("errno avant write dans fd ferme : %d\n", errno);
-	//ft_write(fd, "euh", 3);
+	ft_write(fd, "euh", 3);
 	printf("errno apres %d : %s\n", errno, strerror(errno));
 }
  
