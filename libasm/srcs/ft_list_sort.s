@@ -1,7 +1,7 @@
 section .text
-    global _ft_list_sort
+    global ft_list_sort
 
-_ft_list_sort:					;tri à bulles
+ft_list_sort:					;tri à bulles
 	push rbp
 	mov rbp, rsp
 	push rbx

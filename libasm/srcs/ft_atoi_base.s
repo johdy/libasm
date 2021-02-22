@@ -1,8 +1,8 @@
 section .text
-	global _ft_atoi_base
-	extern _ft_strlen
+	global ft_atoi_base
+	extern ft_strlen
 
-_ft_atoi_base:
+ft_atoi_base:
 	push rbp
 	mov rbp, rsp
 	push rbx
@@ -18,7 +18,7 @@ _ft_atoi_base:
 _get_base_length:
 	push rdi					;on préserve arg1
 	mov rdi, rsi				;on met arg2 dans arg1 pour strlen
-	call _ft_strlen
+	call ft_strlen
 	mov r10, rax				;r10 taille de la base
 	xor rax, rax
 	pop rdi

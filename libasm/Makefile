@@ -15,16 +15,17 @@ OBJ = $(SRCS:%.s=%.o)
 OBJBONUS = $(SRCSBONUS:%.s=%.o)
 
 %.o: %.s
-	@nasm -f macho64 $<
+	@nasm -f elf64 -D__LINUX__=1 $<
 
 all: $(NAME)
 
 $(NAME):	$(OBJ)
-			@ar -rc $(NAME) $(OBJ)
+			@ar -rcs $(NAME) $(OBJ)
+			ranlib $(NAME)
 
 bonus:		$(OBJBONUS)
-			@ar -rc $(NAME) $(OBJBONUS)
-
+			@ar -rcs $(NAME) $(OBJBONUS)
+			ranlib $(NAME)
 clean:
 			rm -rf $(OBJ) $(OBJBONUS)
 

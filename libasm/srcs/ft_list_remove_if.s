@@ -1,8 +1,8 @@
 section .text
-    global _ft_list_remove_if
+    global ft_list_remove_if
     extern _free
 
-_ft_list_remove_if:
+ft_list_remove_if:
 	push rbp
 	mov rbp, rsp
 	xor r13, r13			;flag premier elem OK

@@ -1,7 +1,7 @@
 section .text
-    global _ft_list_size
+    global ft_list_size
 
-_ft_list_size:
+ft_list_size:
 	push rbp
 	mov rbp, rsp
 	xor rax, rax			;compteur du nombre d_élément

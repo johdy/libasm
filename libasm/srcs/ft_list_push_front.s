@@ -1,9 +1,9 @@
 section .text
-    global _ft_list_push_front
+    global ft_list_push_front
     extern _malloc
     extern ___error
 
-_ft_list_push_front:
+ft_list_push_front:
 	push rbp
 	mov rbp, rsp
 	xor r9, r9
