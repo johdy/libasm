@@ -27,13 +27,8 @@ _increm:
 	jmp _loop
 
 _calc_ret:
-	cmp cl, dl		;on definit la veleur de retour selon la string superieure
-	ja _above
-	mov rax, 1
-	jmp _end
-
-_above:
-	mov rax, -1
+	sub rax, rcx		;la valeur de retour est la soustraction entre les char différent de s1 et de s2
+	add rax, rdx
 
 _end:
 	pop rbp
