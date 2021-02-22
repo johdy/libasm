@@ -5,7 +5,7 @@ section .text
 ft_write:
 	push rbp
 	mov rbp, rsp
-	mov rax, 0x2000004		;code du syscall write
+	mov rax, 1				;code du syscall write
 	syscall
 	cmp rax, 0				;si rax < 0 le read a échoué
 	jl _err
