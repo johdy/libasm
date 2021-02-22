@@ -3,7 +3,7 @@ section .text
     extern ft_strlen
     extern malloc
     extern ft_strcpy
-    extern ___errno_location
+    extern __errno_location
 
 ft_strdup:
 	push rbp

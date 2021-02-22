@@ -1,7 +1,7 @@
 section .text
     global ft_list_push_front
     extern malloc
-    extern ___errno_location
+    extern __errno_location
 
 ft_list_push_front:
 	push rbp
