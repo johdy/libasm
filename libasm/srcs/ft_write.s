@@ -17,6 +17,7 @@ _err:
 	call __errno_location	;appel d___error qui va mettre le pointeur errno dans rax
 	pop r15
 	pop rcx
+	neg rcx
 	mov [rax], rcx			;mise du code erreur à adresse de errno
 	mov rax, -1				;valeur de retour : -1
 
