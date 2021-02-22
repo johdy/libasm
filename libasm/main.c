@@ -124,7 +124,7 @@ void test_read(void)
 	printf("%s", red);
 	printf("***Fermeture du fichier\n");
 	//close(fd);
-	fd = open("out_write", O_RDWR | O_TRUNC | O_CREAT, 0777);
+	fd = open("out_write", O_RDONLY, 0777);
 	printf("***Lecture à partir du fichier out_write%d\n", fd);
 	ft_read(fd, red, 11);
 	red[11] = '\0';
