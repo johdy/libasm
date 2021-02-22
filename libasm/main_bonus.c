@@ -78,7 +78,6 @@ t_list *init_list(void)
 	list_last->data = ft_strdup("jamy");
 	list_last->next = NULL;
 	ret = list;
-	display_list(ret);
 	return (ret);
 }
 
@@ -120,6 +119,7 @@ int main(void)
 	display_list(list);
 	printf("//////////NOUVELLE LISTE//////////\n");
 	new_list = malloc(sizeof(t_list));
+	new_list = NULL;
 	ft_list_push_front(&new_list, ft_strdup("zzzzz"));
 	ft_list_push_front(&new_list, ft_strdup("quignon"));
 	ft_list_push_front(&new_list, ft_strdup("pour une fois"));
