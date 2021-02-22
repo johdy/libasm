@@ -7,7 +7,8 @@ ft_read:
 	mov rbp, rsp
 	mov rax, 0x2000003		;code du syscall write
 	syscall
-	jc _err					;jump si flag carry est activé (une erreur de read l_active)
+	cmp rax, 0				;si rax < 0 le read a échoué
+	jl _err
 	jmp _end
 
 _err:
@@ -16,8 +17,7 @@ _err:
 	call __errno_location	;appel d___error qui va mettre le pointeur errno dans rax
 	pop r15
 	pop rcx
-	mov r9, rax
-	mov [r9], rcx			;mise du code erreur à adresse de errno
+	mov [rax], rcx			;mise du code erreur à adresse de errno
 	mov rax, -1				;valeur de retour : -1
 
 _end:
