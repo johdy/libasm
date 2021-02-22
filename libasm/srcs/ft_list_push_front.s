@@ -43,7 +43,7 @@ _pointer_hook:
 	jmp _end		
 
 _err:
-	call ___errno_location
+	call __errno_location
 	mov r9, rax
 	mov rcx, 12
 	mov [r9], rcx

@@ -32,7 +32,7 @@ _copy:
 
 _err:
 	push r15
-	call ___errno_location
+	call __errno_location
 	pop r15
 	mov rbx, rax
 	mov rcx, 12			;12 code d_erreur en cas de mauvais malloc
