@@ -118,7 +118,14 @@ void test_read(void)
 	printf("%s", red);
 	fd = open("out_read", O_RDWR | O_TRUNC | O_CREAT, 0777);
 	ft_write(fd, red, 11);
-	printf("***Lecture à partir du fichier %d\n", fd);
+	printf("***Lecture à partir du fichier out_read\n", fd);
+	ft_read(fd, red, 11);
+	red[11] = '\0';
+	printf("%s", red);
+	printf("***Fermeture du fichier\n");
+	close(fd);
+	fd = open("out_write", O_RDWR | O_TRUNC | O_CREAT, 0777);
+	printf("***Lecture à partir du fichier out_write\n", fd);
 	ft_read(fd, red, 11);
 	red[11] = '\0';
 	printf("%s", red);
