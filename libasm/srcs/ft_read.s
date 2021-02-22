@@ -1,6 +1,6 @@
 section .text
     global ft_read
-    extern ___error
+    extern __errno_location
 
 ft_read:
 	push rbp
@@ -13,7 +13,7 @@ ft_read:
 _err:
 	push rax				;sauvegarde du code erreur dans registre neutre
 	push r15				;alignement de la stack
-	call ___error			;appel d___error qui va mettre le pointeur errno dans rax
+	call __errno_location	;appel d___error qui va mettre le pointeur errno dans rax
 	pop r15
 	pop rcx
 	mov r9, rax
