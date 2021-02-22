@@ -1,6 +1,6 @@
 section .text
     global ft_list_remove_if
-    extern _free
+    extern free
 
 ft_list_remove_if:
 	push rbp
@@ -52,7 +52,7 @@ _suppr:
 	call rcx
 	pop rdi
 	push rdi
-	call _free				;on free maillon
+	call free				;on free maillon
 	pop rdi
 	pop rdx
 	pop rcx

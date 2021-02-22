@@ -1,9 +1,9 @@
 section .text
     global ft_strdup
     extern ft_strlen
-    extern _malloc
+    extern malloc
     extern ft_strcpy
-    extern ___error
+    extern ___errno_location
 
 ft_strdup:
 	push rbp
@@ -19,7 +19,7 @@ _m_word:
 	push rdi			;on push puis recupere l_arg de strdup (aligenemt stack grace a push rbx)
 	inc rax				;strlen + 1
 	mov rdi, rax		;qu_on met dans rdi car c_est l_arg de malloc
-	call _malloc
+	call malloc
 	pop rdi
 	or rax, rax			;si malloc n_a rien renvoye alors malloc a echoue
 	jz _err
@@ -32,7 +32,7 @@ _copy:
 
 _err:
 	push r15
-	call ___error
+	call ___errno_location
 	pop r15
 	mov rbx, rax
 	mov rcx, 12			;12 code d_erreur en cas de mauvais malloc

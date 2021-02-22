@@ -1,7 +1,7 @@
 section .text
     global ft_list_push_front
-    extern _malloc
-    extern ___error
+    extern malloc
+    extern ___errno_location
 
 ft_list_push_front:
 	push rbp
@@ -14,7 +14,7 @@ _malloc_and_set:				;malloc du nouvel élem
 	push rdi					;on conserve rdi et rsi sur la stack
 	push rsi
 	mov rdi, 16					;16 octets taille du malloc (2 * 8)
-	call _malloc
+	call malloc
 	pop rsi
 	pop rdi
 	or rax, rax					;si le malloc à échoué on sort proprement
@@ -43,7 +43,7 @@ _pointer_hook:
 	jmp _end		
 
 _err:
-	call ___error
+	call ___errno_location
 	mov r9, rax
 	mov rcx, 12
 	mov [r9], rcx
