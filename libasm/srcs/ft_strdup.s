@@ -19,7 +19,7 @@ _m_word:
 	push rdi			;on push puis recupere l_arg de strdup (aligenemt stack grace a push rbx)
 	inc rax				;strlen + 1
 	mov rdi, rax		;qu_on met dans rdi car c_est l_arg de malloc
-	call malloc
+	call _malloc
 	pop rdi
 	or rax, rax			;si malloc n_a rien renvoye alors malloc a echoue
 	jz _err
