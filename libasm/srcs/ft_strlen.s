@@ -1,7 +1,7 @@
 section .text
-    global _ft_strlen
+    global ft_strlen
 
-_ft_strlen:
+ft_strlen:
 	push rbp				;prologue, signale la fonction courante pour le debugging
 	mov rbp, rsp			;prologue, signale la fonction courante pour le debugging
 	push rbx

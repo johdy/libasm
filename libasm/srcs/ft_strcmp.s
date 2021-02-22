@@ -1,7 +1,7 @@
 section .text
-    global _ft_strcmp
+    global ft_strcmp
 
-_ft_strcmp:
+ft_strcmp:
 	push rbp
 	mov rbp, rsp
 	xor rax, rax			;mise a zero des registres utilises

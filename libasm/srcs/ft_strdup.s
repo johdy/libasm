@@ -1,11 +1,11 @@
 section .text
-    global _ft_strdup
-    extern _ft_strlen
+    global ft_strdup
+    extern ft_strlen
     extern _malloc
-    extern _ft_strcpy
+    extern ft_strcpy
     extern ___error
 
-_ft_strdup:
+ft_strdup:
 	push rbp
 	mov rbp, rsp
 	push rbx			;on retient rbx qui est callee saved
@@ -13,13 +13,13 @@ _ft_strdup:
 _protect_and_count:
 	or rdi, rdi
 	jz _end
-	call _ft_strlen		;strlen met la longueur de l_arg dans rax
+	call ft_strlen		;strlen met la longueur de l_arg dans rax
 
 _m_word:
 	push rdi			;on push puis recupere l_arg de strdup (aligenemt stack grace a push rbx)
 	inc rax				;strlen + 1
 	mov rdi, rax		;qu_on met dans rdi car c_est l_arg de malloc
-	call _malloc
+	call malloc
 	pop rdi
 	or rax, rax			;si malloc n_a rien renvoye alors malloc a echoue
 	jz _err
@@ -27,7 +27,7 @@ _m_word:
 _copy:
 	mov rsi, rdi		;on prepare les arguments de strcpy
 	mov rdi, rax
-	call _ft_strcpy
+	call ft_strcpy
 	jmp _end
 
 _err:

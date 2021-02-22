@@ -1,8 +1,8 @@
 section .text
-    global _ft_write
+    global ft_write
     extern ___error
 
-_ft_write:
+ft_write:
 	push rbp
 	mov rbp, rsp
 	mov rax, 0x2000004		;code du syscall write

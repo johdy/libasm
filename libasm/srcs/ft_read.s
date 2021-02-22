@@ -1,8 +1,8 @@
 section .text
-    global _ft_read
+    global ft_read
     extern ___error
 
-_ft_read:
+ft_read:
 	push rbp
 	mov rbp, rsp
 	mov rax, 0x2000003		;code du syscall write
