@@ -16,8 +16,8 @@ _err:
 	call ___error			;appel d___error qui va mettre le pointeur errno dans rax
 	pop r15
 	pop rcx
-	mov rbx, rax			;errno doit être dans rbx
-	mov [rbx], rcx			;mise du code erreur à adresse de errno
+	mov r9, rax
+	mov [r9], rcx			;mise du code erreur à adresse de errno
 	mov rax, -1				;valeur de retour : -1
 
 _end:

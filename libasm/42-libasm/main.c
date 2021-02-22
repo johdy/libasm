@@ -35,8 +35,6 @@ char	*ft_strcpy(char *dst, char const *src);
 
 ssize_t	ft_write(int fd, void const *buf, size_t nbyte);
 
-ssize_t	ft_read(int fd, void *buf, size_t nbyte);
-
 char	*ft_strdup(char const *s1);
 
 /*
@@ -89,14 +87,14 @@ int		main(void)
 	WRITE("toto", 2L)
 	printf("-done\n");
 
-	printf("\n--read (Makefile)\n");
-	READ(buffer, 50)
-	READ(buffer, 25)
-	READ(buffer, 4)
-	READ(buffer, 26)
-	READ(buffer, 14)
-	READ(buffer, 0)
-	printf("-done\n");
+	// printf("\n--read (Makefile)\n");
+	// READ(buffer, 50)
+	// READ(buffer, 25)
+	// READ(buffer, 4)
+	// READ(buffer, 26)
+	// READ(buffer, 14)
+	// READ(buffer, 0)
+	// printf("-done\n");
 
 	printf("\n--ft_strdup\n");
 	tmp2 = ft_strdup("toto");

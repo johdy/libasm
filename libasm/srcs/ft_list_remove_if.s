@@ -22,7 +22,7 @@ _init:
 	jmp _boucle
 
 _next_elem:
-	mov r15, rdi				;r8 garde en mémoire elem précédent
+	mov r15, rdi			;r8 garde en mémoire elem précédent
 	mov rdi, [rdi + 8]		;on avance d_un maillon
 
 _boucle:

@@ -28,9 +28,13 @@ _compare:
 	jz _end
 	push rdi					;on met les éléments sur la stack
 	push rsi					;afin de mettre les datas dans rdi rsi
+	push r14
+	push r15
 	mov rdi, [rdi]
 	mov rsi, [rsi]				;|adresse de data (8 octets)|adresse de l_elem suivant (8 octets)|
 	call rbx					;on appelle la fonction
+	pop r15
+	pop r14
 	pop rsi
 	pop rdi
 	cmp rax, 0					;si rax > 0, on intervertit les datas

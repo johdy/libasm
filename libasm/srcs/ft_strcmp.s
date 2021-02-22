@@ -8,6 +8,10 @@ _ft_strcmp:
 	xor rcx, rcx
 	xor rdx, rdx
 	xor r8, r8
+	or rdi, rdi				;protection si chaînte inexistante
+	jz _end
+	or rsi, rsi
+	jz _end
 
 _loop:
 	mov dl, [rdi + r8]		;on utilise le premier octet de rcx et rdx pour comparer les caracteres
