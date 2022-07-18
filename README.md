@@ -39,7 +39,9 @@ struct s_list *next;
 
 • ft_atoi_base (like the one in the piscine)
 
-• ft_list_push_front (like the one in the piscine) • ft_list_size (like the one in the piscine)
+• ft_list_push_front (like the one in the piscine) 
+
+• ft_list_size (like the one in the piscine)
 
 • ft_list_sort (like the one in the piscine)
 
